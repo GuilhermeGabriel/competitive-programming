@@ -22,7 +22,7 @@ int main() {
 		vant = v;
 	}
 
-	cout << countrecord;
+	cout << countrecord << endl;
 
 	return 0;
 }
