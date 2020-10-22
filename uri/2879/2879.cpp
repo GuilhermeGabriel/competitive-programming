@@ -3,28 +3,40 @@
 using namespace std;
 
 int main() {
-	int n, e = 1, v = 0;
+	int n, v = 0;
 	cin >> n;
+
+	char portas[3] = {'b', 'b', 'b'};
 
 	for (int i = 1; i <= n; i++) {
 		int bodep;
+		char vfinal;
 		cin >> bodep;
+		portas[bodep - 1] = 'c';
 
-		if (e == 1 && bodep == 2) e = 3;
-		if (e == 1 && bodep == 3) e = 2;
-		if (e == 2 && bodep == 1) e = 3;
-		if (e == 2 && bodep == 3) e = 1;
-		if (e == 3 && bodep == 1) e = 2;
-		if (e == 3 && bodep == 2) e = 1;
+		portas[0] = 'e';
+
+		for (int i = 0; i < 3; i++) {
+			if (portas[i] == 'b') {
+				portas[i] = 'x';
+				break;
+			}
+		}
 
 
-		if (i % 3 == 0) {
-			if (bodep == e) v++;
-			e = 1;
+		for (int i = 0; i < 3; i++) {
+			if (portas[i] != 'x' && portas[i] != 'e') {
+				vfinal = portas[i];
+			}
+		}
+
+		if (vfinal == portas[bodep - 1]) {
+			v++;
+			for (int i = 0; i < 3; i++) portas[i] = 'b';
 		}
 	}
 
-	printf("%d\n", v);
+	cout << v << endl;
 
 	return 0;
 }
