@@ -18,9 +18,7 @@ int main(void) {
       int result = fat(i);
 
       if (result > n) {
-        int r = fat(i - 1);
-
-        n -= r;
+        n -= fat(i - 1);
         quant++;
         break;
       }
