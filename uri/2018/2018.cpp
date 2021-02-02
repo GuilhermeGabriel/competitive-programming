@@ -3,8 +3,8 @@
 using namespace std;
 
 struct Pais{
-	string nome;
 	int ouro=0, prata=0, bronze=0;
+	string nome;
 };
 
 bool order(Pais p1, Pais p2){
@@ -16,38 +16,30 @@ bool order(Pais p1, Pais p2){
 
 int main(){
 	Pais tmp; string in;
-	vector<Pais> paises;
+	map<string, Pais> mPaises;
+	vector<Pais> vPaises;
 
 	while(getline(cin, in)){
 		for(int i=0;i<3;i++){
-			getline(cin,tmp.nome);
-			cout << tmp.nome << endl;
-			
-			bool in_list = false;
-			for(int j=0; j<paises.size()&&!in_list;j++){
-				Pais p = paises[j];
-				if(p.nome == tmp.nome){
-					if(i==0)paises[j].ouro++;
-					if(i==1)paises[j].prata++;
-					if(i==2)paises[j].bronze++;
-					in_list = true;
-				}
-			}
+			getline(cin,in);
 
-			if(in_list)continue;
-
-			if(i==0)tmp.ouro++;
-			if(i==1)tmp.prata++;
-			if(i==2)tmp.bronze++;
-			paises.push_back(tmp);
+			if(i==0)mPaises[in].ouro++;
+			if(i==1)mPaises[in].prata++;
+			if(i==2)mPaises[in].bronze++;
+			mPaises[in].nome=in;
 		}
 	}
 
-	sort(paises.begin(), paises.end(), order);
+	cout << "Quadro de Medalhas" << endl;
+	for (map<string, Pais>::iterator it=mPaises.begin();it!=mPaises.end();it++){
+		Pais p = it->second;
+		vPaises.push_back(p);
+	}
 
-	cout << "Quadro de medalhas" << endl;
-	for (int i = 0; i < paises.size(); ++i){
-		Pais p = paises[i];
+	sort(vPaises.begin(), vPaises.end(), order);
+
+	for(int i=0;i<vPaises.size();i++){
+		Pais p = vPaises[i];
 		cout << p.nome << " " << p.ouro << " " << p.prata << " " << p.bronze << endl;
 	}
 

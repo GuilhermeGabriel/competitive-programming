@@ -3,41 +3,18 @@
 using namespace std;
 
 int main(){
-	int p1, p2;
+	int p1, p2, i=0;
 	vector<char> t = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'};
-	vector<int> g;
 
-	/*a b c d e f g h
-
-	a b c d*/
-
-	for(int i=0;i<16;i++){
-		cin>>p1>>p2;
-		g.push_back(p1>p2);
-	}
-
-	for (int i=0;i<=8;i+=2){
-		if(g[i]) t.erase(t.begin()+i+1);
+	while(cin>>p1>>p2&&t.size()>1){
+		if(p1>p2)t.erase(t.begin()+i+1);
 		else t.erase(t.begin()+i);
 
-		g.erase(g.begin()+i);
+		if(i+1<t.size())i++;
+		else i=0;
 	}
 
-	for (int i=0;i<=4;i+=2){
-		if(g[i]) t.erase(t.begin()+i+1);
-		else t.erase(t.begin()+i);
-
-		g.erase(g.begin()+i);
-	}
-
-	for (int i=0;i<=2;i+=2){
-		if(g[i]) t.erase(t.begin()+i+1);
-		else t.erase(t.begin()+i);
-
-		g.erase(g.begin()+i);
-	}
-
-  for(int i=0;i<(int)t.size();i++) cout<<t[i];
+	cout<<t[0]<<endl;
 
 	return 0;
 }

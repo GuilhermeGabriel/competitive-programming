@@ -27,17 +27,16 @@ int main(){
 		cout << "Teste " << index++ << endl;
 		int start = intervals[0].s, end=intervals[0].e;
 
-		for(int i=1; i<=intervals.size(); i++){
-			while(intervals[i].s <= end){
-				if(intervals[i].e > end) end = intervals[i].e;
-				i++;
+		for(int i=1; i<intervals.size(); i++){
+			if(intervals[i].s>end){
+				cout<<start<<" "<<end<<"\n";
+				start=intervals[i].s;
+				end=intervals[i].e;
+			}else if(intervals[i].e>end){
+				end=intervals[i].e;
 			}
-
-			cout << start << " " << end << endl;
-			
-			start = intervals[i].s;
-			end = intervals[i].e;
 		}
+		cout<<start<<" "<<end<<"\n\n";
 
 		intervals.clear();
 	}
