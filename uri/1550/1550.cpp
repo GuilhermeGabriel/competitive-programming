@@ -2,19 +2,27 @@
 
 using namespace std;
 
-vector<int> verts;
+int nums[10001];
+vector<int> adj[10];
 
-void bfs(int v){
+void dfs(int v){
+	queue<int> fila;
+
+	int x=fila.front();
+	fila.pop();
+	
+	while(!fila.empty()){
+
+	}
 
 }
 
 int main(){
-	int n,a,b;cin>>n;
+	std::ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
-	while(n--){
-		cin>>a>>b;
-
-	}
+	
+	
 
 	return 0;
 }
