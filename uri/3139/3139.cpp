@@ -3,28 +3,27 @@
 using namespace std;
 
 int main(){
-	double n, m; cin>>n>>m;
-	double c=30,d=0;
-
-	vector<double> seg_dias;
-	while(c--){
-		int i; cin>>i;
-		seg_dias.push_back(i);
+	double n,m,d,s=0;cin>>n>>m;
+	long long q=0;
+	queue<double> dias;
+	for(int i=0;i<30;i++){
+		cin>>d; dias.push(d);
+		s+=d;
 	}
 
-	double sum=0, me=0;
-	for(int i=0;i<30;i++)sum+=seg_dias[i];
-	while(n<m){
-		me=ceil(sum/30);
-		sum-=seg_dias[0];
-		sum+=me;
-		seg_dias.erase(seg_dias.begin());
-		//seg_dias.push_back(me);
-		n+=me;
-		d++;
+	double med=ceil(s/30);
+	while(n<=m){
+		s-=dias.front();
+		dias.pop();
+
+		dias.push(med);
+		s+=med;
+		n+=med;
+		med=ceil(s/30);
+		q++;
 	}
 
-	cout << d << endl;
+	cout<<q<<"\n";
 
 	return 0;
 }

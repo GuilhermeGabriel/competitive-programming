@@ -13,45 +13,41 @@ bool order(Casa a, Casa b){
 
 int main(){
 	std::ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
+	cin.tie(nullptr);
 
-	double n, qp=0, c=0, cm=0; Casa tmpC;
-	map<double,double> mcasas;
-	vector<Casa> casas;
+	int n, qp=0, c=0, cm=0;
+	map<int,int> mcasas; Casa tmpC;
+	vector<Casa> vcasas;
 	while(cin>>n&&n){
 		while(n--){
 			cin>>tmpC.p>>tmpC.c;
 			
-			cm+=tmpC.c;
+			cm+=tmpC.c/tmpC.p;
 			qp+=tmpC.p;
 	
-			mcasas[tmpC.p]+=tmpC.c;
+			mcasas[cm]+=tmpC.p;
+		}
+		for(map<int,int>::iterator it=mcasas.begin();it!=mcasas.end();it++){
+			tmpC.c=it->first;
+			tmpC.p=it->second;
+			vcasas.push_back(tmpC);
 		}
 
-		for(map<double,double>::iterator it=mcasas.begin(); 
-			it!=mcasas.end();it++){
-			tmpC.p=it->first;
-			tmpC.c=it->second/tmpC.p;
-
-			casas.push_back(tmpC);
-		}
-
-		sort(casas.begin(), casas.end(), order);
+		sort(vcasas.begin(), vcasas.end(), order);
 		
 		cout<<setprecision(1);
 		cout<<"Cidade # "<<++c<<"\n";
-		for(int i=0;i<casas.size();i++){
-			cout<<casas[i].p<<"-"<<casas[i].c;
-			if(i!=casas.size()-1)cout<<" ";
+		for(int i=0;i<vcasas.size();i++){
+			cout<<vcasas[i].p<<"-"<<vcasas[i].c;
+			if(i!=vcasas.size()-1)cout<<" ";
 		}
 		cout<<"\n";
 
 		cout<<setprecision(2)<<fixed;
 		cout<<"Consumo medio: "<<cm/qp<<" m3.\n\n";
 		cm=qp=0;
-		casas.clear();
+		vcasas.clear();
 	}
-	
 
 	return 0;
 }
