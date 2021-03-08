@@ -15,28 +15,33 @@ int main(){
 	std::ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, qp=0, c=0, cm=0;
+	int n;
+	double qp=0, c=0, cm=0, ct=0;
 	map<int,int> mcasas; Casa tmpC;
 	vector<Casa> vcasas;
 	while(cin>>n&&n){
+		if(c!=0)cout<<"\n";
 		while(n--){
 			cin>>tmpC.p>>tmpC.c;
 			
-			cm+=tmpC.c/tmpC.p;
+			cm=tmpC.c/tmpC.p;
+
+			ct+=tmpC.c;
 			qp+=tmpC.p;
 	
 			mcasas[cm]+=tmpC.p;
 		}
-		for(map<int,int>::iterator it=mcasas.begin();it!=mcasas.end();it++){
-			tmpC.c=it->first;
-			tmpC.p=it->second;
+		for(auto it:mcasas){
+			tmpC.c=it.first;
+			tmpC.p=it.second;
 			vcasas.push_back(tmpC);
 		}
 
 		sort(vcasas.begin(), vcasas.end(), order);
 		
-		cout<<setprecision(1);
-		cout<<"Cidade # "<<++c<<"\n";
+		cout<<setprecision(0);
+		cout<<"Cidade# "<<++c<<":\n";
+
 		for(int i=0;i<vcasas.size();i++){
 			cout<<vcasas[i].p<<"-"<<vcasas[i].c;
 			if(i!=vcasas.size()-1)cout<<" ";
@@ -44,9 +49,10 @@ int main(){
 		cout<<"\n";
 
 		cout<<setprecision(2)<<fixed;
-		cout<<"Consumo medio: "<<cm/qp<<" m3.\n\n";
-		cm=qp=0;
+		cout<<"Consumo medio: "<<floor(ct*100/qp)/100<<" m3.\n";
+		cm=qp=ct=0;
 		vcasas.clear();
+		mcasas.clear();
 	}
 
 	return 0;

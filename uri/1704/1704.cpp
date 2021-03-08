@@ -12,24 +12,26 @@ bool order(Tarefa a, Tarefa b){
 }
 
 int main(){
-	int n,t,p=0;
-	Tarefa tmp;
-	vector<Tarefa> trfs;
+	int n,t,ta=0,q=0;
+	vector<Tarefa> trfs; Tarefa tmp;
 
 	while(cin>>n>>t){
 		while(n--){
 			cin>>tmp.v>>tmp.tf;
 			trfs.push_back(tmp);
 		}
-		sort(trfs.begin(), trfs.end(), order);
+		sort(trfs.begin(),trfs.end(),order);
 
-		/*int tp=trfs[0].tf;
-		for(int i=trfs[0].tf;i<=t;i++){
-			while(trfs[0]==tr)
-		}*/
+		for(auto t:trfs){
+		//	cout<<t.tf<<"\n";
+		}
 
-		cout<<p<<"\n";
-		p=0;
+		for(int i=0;i<trfs.size()&&t;i++){
+			if(ta>=trfs[i].tf){q+=trfs[i].v;continue;}
+			t--;ta++;
+		}
+
+		cout<<q<<"\n";q=ta=0;
 		trfs.clear();
 	}
 
