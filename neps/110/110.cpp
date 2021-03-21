@@ -3,26 +3,24 @@
 using namespace std;
 
 int main() {
-	int n, v, vant, countrecord = 0, countatual = 1;
+	int n,v,vant=-1,countrecord=0,countatual=0;
+	cin>>n;
 
-	cin >> n;
+	while(n--){
+		cin>>v;
 
-	for (int i = 0; i < n; i++) {
-		cin >> v;
-
-		if (v == vant) {
+		if(v==vant)
 			countatual++;
-			if (countatual > countrecord) {
-				countrecord = countatual;
-			}
-		} else {
-			countatual = 1;
-		}
+		else
+			countatual=1;
 
-		vant = v;
+		if(countatual>countrecord)
+				countrecord=countatual;
+
+		vant=v;
 	}
 
-	cout << countrecord << endl;
+	cout<<countrecord<<"\n";
 
 	return 0;
 }
