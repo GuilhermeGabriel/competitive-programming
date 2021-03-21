@@ -8,6 +8,7 @@ int main(){
 	
 	int n,m,p;cin>>n>>m;
 	vector<int> pgs;
+
 	while(n--){
 		cin>>p;
 		pgs.push_back(p);
