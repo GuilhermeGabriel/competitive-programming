@@ -2,10 +2,6 @@
 
 using namespace std;
 
-/*
-scanf("%d %d=%d\n", &X[i], &Y[i], &Z[i]);
-*/
-
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
@@ -21,7 +17,7 @@ int main(){
 	}
 
 	int mult=k/n;
-	if(mult!=0)	
+	if(mult!=0)
 		for(int i=0;i<n;i++)r[i]+=s*mult;
 
 	int res=k%n;
