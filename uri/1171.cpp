@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 
 using namespace std;
 
@@ -12,8 +12,8 @@ int main(){
 		mn[i]++;
 	}
 
-	for(map<int,int>::iterator t=mn.begin();t!=mn.end();t++){
-		cout<<t->first<<" aparece "<<t->second<<" vez(es)"<<"\n";
+	for(auto t: mn){
+		cout<<t.first<<" aparece "<<t.second<<" vez(es)"<<"\n";
 	}
 
 	return 0;
