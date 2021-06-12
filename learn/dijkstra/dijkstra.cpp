@@ -16,7 +16,6 @@ void dijkstra(int v){
 		int vec=aux.second;
 		int distv=aux.first;
 	}
-
 }
 
 int main(){
