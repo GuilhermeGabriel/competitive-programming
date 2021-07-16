@@ -1,20 +1,21 @@
-#include <iostream>
-#include <climits>
-#include <vector>
+/*#include <bits/stdc++.h>
 
 using namespace std;
 
-int qa,memo[100000],mss[100000];
+int memo[10000];
+int v[]={0,1,2,4,0};
 
 int MSC(int *A, int i){
-	if(memo[i]>0)return memo[i];
-	int tmp,max=INT_MIN;
+	if(i==0)return 1;
+	if(memo[i])return memo[i];
+	int maior=-1e9;
 	for(int j=0;j<i;j++){
-		if(A[j]>A[i])tmp=MSC(A,j)+1;
-		if(tmp>max)max=tmp;
+		if(v[j]<v[i]){
+			maior=max(maior,MSC(A,j)+1);
+		}
 	}
-	memo[i]=max;
-	return max;
+	memo[i]=maior;
+	return maior;
 }
 
 int main(){
@@ -46,4 +47,4 @@ int main(){
 	}
 
 	return 0;
-}
+}*/
