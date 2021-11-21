@@ -6,7 +6,10 @@
     "format": "cpp",
     "list": "cpp",
     "vector": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "queue": "cpp",
+    "algorithm": "cpp",
+    "xlocale": "cpp",
+    "xutility": "cpp"
   },
-  "C_Cpp.errorSquiggles": "Disabled"
 }
