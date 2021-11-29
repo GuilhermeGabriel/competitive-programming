@@ -2,5 +2,8 @@ bits/
 bitsl/
 bitsw/
 monitoria/
+codes_sqtpm1/
+codes_sqtpm2/
+random/
 IC/
 *.exe
