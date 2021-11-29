@@ -2,8 +2,8 @@
 using namespace std;
 
 vector<vector<int>> adj;
-int visited[1000010],q=0;
-int mat[1000][1000];
+int visited[1100010],q=0;
+int mat[1100][1100];
 
 void dfs(int no){
   if(visited[no])return;

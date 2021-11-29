@@ -10,6 +10,7 @@
     "queue": "cpp",
     "algorithm": "cpp",
     "xlocale": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "variant": "cpp"
   },
 }

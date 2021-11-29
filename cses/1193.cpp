@@ -38,25 +38,41 @@ int main(){
   for(int i=0;i<n;i++){
     for(int j=0;j<m;j++){
       cin>>tmp;
+      vector<int>v;adj.push_back(v);
       if(tmp=='#')mat[i][j]=-1;
       if(tmp=='.'||tmp=='A'||tmp=='B'){
         mat[i][j]=no_c++;
-        vector<int>v;adj.push_back(v);
         if(tmp=='A')in=no_c-1;
         if(tmp=='B'){out=no_c-1;outi=i;outj=j;}
       }
     }
   }
+  
 
   for(int i=0;i<n;i++){
     for(int j=0;j<m;j++){
+      //cout<<mat[i][j];
       if(mat[i][j]>0){
-        if(i-1>=0&&mat[i-1][j]!=-1)adj[mat[i][j]].push_back(mat[i-1][j]);
-        if(i+1<n&&mat[i+1][j]!=-1)adj[mat[i][j]].push_back(mat[i+1][j]);
-        if(j+1<m&&mat[i][j+1]!=-1)adj[mat[i][j]].push_back(mat[i][j+1]);
-        if(j>=1&&mat[i][j-1]!=-1)adj[mat[i][j]].push_back(mat[i][j-1]);
+
+        if(i-1>=0){
+          if(mat[i-1][j]!=-1)adj[mat[i][j]].push_back(mat[i-1][j]);
+        }
+
+        if(i+1<n){
+          if(mat[i+1][j]!=-1)adj[mat[i][j]].push_back(mat[i+1][j]);
+        }
+
+        if(j+1<m){
+          if(mat[i][j+1]!=-1)adj[mat[i][j]].push_back(mat[i][j+1]);
+        }
+        
+        
+        if(j-1>=0){
+          if(mat[i][j-1]!=-1)adj[mat[i][j]].push_back(mat[i][j-1]);
+        }
       }
     }
+    //cout<<'\n';
   }
 
   if(bfs(in)){
