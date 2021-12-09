@@ -7,4 +7,5 @@ codes_sqtpm2/
 codes_sqtpm3/
 random/
 IC/
+*.html
 *.exe
