@@ -11,6 +11,9 @@
     "algorithm": "cpp",
     "xlocale": "cpp",
     "xutility": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "tuple": "cpp",
+    "random": "c",
+    "stdio.h": "c"
   },
 }
