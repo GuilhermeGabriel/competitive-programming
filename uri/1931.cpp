@@ -1,50 +1,45 @@
 #include "bits/stdc++.h"
-
 using namespace std;
 
-vector<int> lis(vector<int> const& a){
-	int n=a.size();
-	vector<int> d(n,1),p(n,-1);
-	for(int i=0;i<n;i++){
-		for(int j=0;j<i;j++){
-			if(a[j]<a[i]&&d[i]<d[j]+1){
-				d[i]=d[j]+1;
-				p[i]=j;
-			}
-		}
-	}
+vector<pair<int,int>> adj[501];
+int dist[501];bool vis[100001];
 
-	//encontra a posição do ultimo elem
-	//da maior subseq
-	int ans=d[0],pos=0;
-	for(int i=0;i<n;i++){
-		if(d[i]>ans){
-			pos=i;
-			ans=d[i];
-		}
-	}
-
-	vector<int> subseq;
-	while(pos!=-1){
-		subseq.push_back(a[pos]);
-		pos=p[pos];
-	}
-	reverse(subseq.begin(),subseq.end());
-	return subseq;
+void dijkstra(int s){
+  for(int i=1;i<=n;i++)dist[i]=LLONG_MAX;
+  dist[s]=0;priority_queue<pair<int,int>> q;q.push({0,s});
+  while(!q.empty()){
+    int a=q.top().second;q.pop();
+    if(vis[a])continue;
+    vis[a]=true;
+    for(auto u:adj[a]){
+      int b=u.first,w=u.second;
+      if(dist[a]+w<dist[b]){
+        dist[b]=dist[a]+w;
+        q.push({-dist[b],b});
+      }
+    }
+  }
 }
 
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	
-	int i,n,c;cin>>n>>c;	
-	vector<int> v,subseq;
-	while(n--){
-		cin>>i;v.push_back(i);
+	int n,e,a,b,w,k,o,d;
+	while(cin>>n>>e){
+		for(int i=1;i<=e;i++){
+			cin>>a>>b>>w;
+			adj[a].push_back({b,w});
+		}
+
+		cin>>k;
+
+		while(k--){
+			cin>>o>>d;
+		}
 	}
-	subseq=lis(v);
-	cout<<subseq[subseq.size()-1]-subseq[0]-c;
+
+	dijkstra(1);
 
 	return 0;
 }

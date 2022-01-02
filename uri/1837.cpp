@@ -3,11 +3,8 @@
 using namespace std;
 
 int main(){
-	int a, b, q=0, r; cin>>a>>b;
-
-	while(b>a){
-		b-=abs(aux);
-	}
+	int a,b,q=0,r;
+	cin>>a>>b;
 	
 	return 0;
 }
