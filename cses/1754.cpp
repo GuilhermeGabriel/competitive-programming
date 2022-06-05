@@ -8,17 +8,17 @@ int main(){
   while(t--){
     cin>>a>>b;
 
-    if(a+b<3){
-      cout<<"NO\n";
-      continue;
-    }
-
-    if(a%2==0 && b%2==0){
-      cout<<"NO\n";
-      continue;
-    }
-    
-    cout<<"YES\n";
+    if(a<b)swap(a,b);
+    if(a>2*b)cout<<"NO\n";
+    else{
+      a%=3;b%=3;
+      if(a<b)swap(a,b);
+      if((a==2 && b==1) || (a==0 && b==0)){
+        cout<<"YES\n";
+      }else{
+        cout<<"NO\n";
+      }
+    }    
   }
 
 
