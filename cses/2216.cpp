@@ -1,34 +1,28 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
 
 int main(){
-  int n,in;cin>>n;
+  int n,r=0;cin>>n;
+  unordered_map<int,int> v;
 
+  int in,i=0;
   while(n--){
     cin>>in;
+    v[in]=i++;
   }
 
-  int m=1,r=0;
-  while(vals.size()>1){
-    for(auto it=vals.begin();it!=vals.end();){
-      // cout<<it->second;
+  /*
+  5 3
+  4 2 1 5 3
+  2 3
+  1 5
+  2 3
+  */
 
-      if(m==it->second){
-        m++;
-        it = vals.erase(it);
-        r++;
-      }else{
-        it++;
-      }
+  for(int i=1;i<(int)v.size();i++)
+    if(v[i]<v[i-1])r++;
 
-    }
-    for(auto it=vals.begin();it!=vals.end();it++){
-      cout<<it->second;
-    }
-    break;
-  }
-
-  cout<<r<<'\n';
+  cout<<r+1<<'\n';
 
   return 0;
 }

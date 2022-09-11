@@ -1,28 +1,31 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
- 
+typedef long long ll;
+
 int main(){
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
+  int n,x;cin>>n>>x;
+  vector<pair<int,int>> vals(n);
 
-  int n,o,in;cin>>n>>o;
-  unordered_map<int,int> idxs,qnum;
-
-  int idx=1;
-  while(n--){
-    cin>>in;
-    idxs[in]=idx++;
-    qnum[in]++;
+  for(int i=0;i<n;i++){
+    int v;cin>>v;
+    vals[i]={v,i+1};
   }
 
-  for(auto item:idxs){
-    int e=item.first,x=o-e;
-    if(idxs[x]>0){
-      if(x==e&&qnum[x]<2)continue;
-      cout<<idxs[x]<<' '<<idxs[e]<<'\n';
+  sort(vals.begin(),vals.end());
+
+  int i=0,j=n-1;
+  while(i<j){
+    if(vals[i].first+vals[j].first==x){
+      cout<<vals[i].second<<" "<<vals[j].second<<'\n';
       return 0;
     }
-  }
+
+    if(vals[i].first+vals[j].first<x){
+      i++;
+    }else{
+      j--;
+    }
+  }  
 
   cout<<"IMPOSSIBLE"<<'\n';
 
